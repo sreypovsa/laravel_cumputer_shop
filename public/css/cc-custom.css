@@ -1,0 +1,947 @@
+/* ==========================================================================
+   NEAKRUSAVEN STOREFRONT THEME & STYLES
+   BUILT WITH BOOTSTRAP 5 INTEGRATION
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Kantumruy+Pro:wght@400;500;600;700&display=swap');
+
+:root {
+  --cc-navy-950: #0a1428;
+  --cc-navy-900: #0f1f3d;
+  --cc-navy-800: #16305c;
+  --cc-blue-600: #190ee9;
+  --cc-blue-500: #2563eb;
+  --cc-blue-100: #e7eefb;
+  --cc-accent-500: #ff7a1a;
+  --cc-accent-600: #e8650a;
+  --cc-yellow-500: #FFD700;
+  --cc-yellow-400: #facc15;
+  --cc-danger: #dc2626;
+
+  --cc-ink: #101828;
+  --cc-body: #1e293b;
+  --cc-muted: #64748b;
+  --cc-border: #e2e8f0;
+  --cc-card-bg: #ffffff;
+  --cc-bg-light: #f8fafc;
+
+  --cc-font: 'Inter', 'Kantumruy Pro', system-ui, -apple-system, sans-serif;
+  --cc-transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  --cc-shadow-sm: 0 1px 3px rgba(16, 24, 40, 0.06), 0 1px 2px rgba(16, 24, 40, 0.04);
+  --cc-shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+  --cc-shadow-lg: 0 12px 28px rgba(15, 23, 42, 0.12);
+}
+
+body {
+  font-family: var(--cc-font);
+  background-color: var(--cc-bg-light);
+  color: var(--cc-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   1. TICKER ANNOUNCEMENT MARQUEE BAR
+   -------------------------------------------------------------------------- */
+.ticker-bar {
+  background: #0a1428;
+  color: #ffffff;
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 0;
+  font-size: 13px;
+  font-weight: 500;
+  position: relative;
+  z-index: 1040;
+}
+
+.ticker-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: ccMarquee 35s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+.ticker-track span {
+  padding-right: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ticker-track span b {
+  color: var(--cc-yellow-500);
+}
+
+@keyframes ccMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* --------------------------------------------------------------------------
+   2. MAIN HEADER
+   -------------------------------------------------------------------------- */
+.cc-header {
+  background: #ffffff;
+  border-bottom: 1px solid var(--cc-border);
+  transition: padding var(--cc-transition);
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.cc-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.cc-logo__img {
+  width: 132px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+.cc-logo__mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--cc-blue-600), var(--cc-navy-950));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.cc-logo__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.cc-logo__name {
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: 0.2px;
+  color: var(--cc-navy-950);
+}
+
+.cc-logo__tag {
+  font-size: 11.5px;
+  color: var(--cc-muted);
+  font-weight: 500;
+}
+
+/* Header Search */
+.cc-search-form {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+}
+
+.cc-search-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 46px 0 42px;
+  border-radius: 9999px;
+  border: 1.5px solid var(--cc-border);
+  background-color: var(--cc-bg-light);
+  font-size: 14px;
+  color: var(--cc-ink);
+  transition: var(--cc-transition);
+}
+
+.cc-search-input:focus {
+  outline: none;
+  background-color: #ffffff;
+  border-color: var(--cc-blue-500);
+  box-shadow: 0 0 0 4px var(--cc-blue-100);
+}
+
+.cc-search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cc-muted);
+  font-size: 15px;
+  pointer-events: none;
+}
+
+.cc-search-submit {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: var(--cc-blue-600);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--cc-transition);
+}
+
+.cc-search-submit:hover {
+  background: var(--cc-blue-100);
+}
+
+/* Header Action Icons */
+.cc-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cc-social-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--cc-navy-900);
+  background: #f1f5f9;
+  border: 1px solid transparent;
+  transition: var(--cc-transition);
+  text-decoration: none;
+}
+
+.cc-social-btn:hover {
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.cc-social-btn--fb:hover { background: #1877f2; }
+.cc-social-btn--tg:hover { background: #2aabee; }
+.cc-social-btn--wa:hover { background: #25d366; }
+.cc-social-btn--wc:hover { background: #07c160; }
+
+.cc-call-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 9999px;
+  background: var(--cc-yellow-500);
+  color: var(--cc-navy-950);
+  font-weight: 800;
+  font-size: 13.5px;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(255, 215, 0, 0.35);
+  transition: var(--cc-transition);
+  text-decoration: none;
+}
+
+.cc-call-btn:hover {
+  background: #eab308;
+  color: var(--cc-navy-950);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.45);
+}
+
+.cc-cart-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  color: var(--cc-navy-950);
+  font-size: 16px;
+  transition: var(--cc-transition);
+  text-decoration: none;
+}
+
+.cc-cart-btn:hover {
+  background: var(--cc-blue-100);
+  color: var(--cc-blue-600);
+}
+
+.cc-cart-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--cc-danger);
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 800;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+}
+
+/* --------------------------------------------------------------------------
+   3. CATEGORY NAVIGATION BAR
+   -------------------------------------------------------------------------- */
+.cc-nav-bar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--cc-border);
+  position: sticky;
+  top: 72px;
+  z-index: 1025;
+}
+
+.cc-nav-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.cc-nav-list::-webkit-scrollbar {
+  display: none;
+}
+
+.cc-nav-item {
+  flex-shrink: 0;
+}
+
+.cc-nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--cc-ink);
+  transition: var(--cc-transition);
+  white-space: nowrap;
+}
+
+.cc-nav-link::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 0px;
+  height: 3px;
+  background: var(--cc-yellow-500);
+  border-radius: 4px 4px 0 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--cc-transition);
+}
+
+.cc-nav-link:hover {
+  color: var(--cc-blue-600);
+}
+
+.cc-nav-link:hover::after,
+.cc-nav-link.is-active::after {
+  transform: scaleX(1);
+}
+
+.cc-nav-link.is-active {
+  color: var(--cc-blue-600);
+}
+
+/* --------------------------------------------------------------------------
+   4. HERO CAROUSEL
+   -------------------------------------------------------------------------- */
+.cc-hero-wrapper {
+  padding: 24px 0;
+}
+
+.cc-hero-frame {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--cc-shadow-md);
+  background: var(--cc-navy-950);
+}
+
+.cc-hero-slide img {
+  width: 100%;
+  aspect-ratio: 1920 / 680;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .cc-logo__img {
+    width: 116px;
+    height: 70px;
+  }
+
+  .cc-hero-slide img {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 48px;
+  height: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(10, 20, 40, 0.65);
+  border-radius: 50%;
+  margin: 0 16px;
+  opacity: 0.85;
+  transition: var(--cc-transition);
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background: var(--cc-yellow-500);
+  color: var(--cc-navy-950);
+  opacity: 1;
+}
+
+.carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 4px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: none;
+}
+
+.carousel-indicators .active {
+  width: 28px;
+  border-radius: 10px;
+  background-color: var(--cc-yellow-500);
+}
+
+/* --------------------------------------------------------------------------
+   5. BRAND CAPSULES SECTION
+   -------------------------------------------------------------------------- */
+.cc-brands-section {
+  padding: 16px 0;
+}
+
+.cc-brands-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.cc-brand-pill {
+  padding: 8px 18px;
+  border-radius: 9999px;
+  border: 1px solid var(--cc-border);
+  background: #ffffff;
+  color: var(--cc-navy-950);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: var(--cc-transition);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.cc-brand-pill:hover,
+.cc-brand-pill.is-active {
+  background: var(--cc-navy-950);
+  color: var(--cc-yellow-500);
+  border-color: var(--cc-navy-950);
+  transform: translateY(-2px);
+  box-shadow: var(--cc-shadow-sm);
+}
+
+/* --------------------------------------------------------------------------
+   6. SERIES / SUB-CATEGORY BUTTONS (.myButton)
+   -------------------------------------------------------------------------- */
+.cc-series-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 24px;
+}
+
+.myButton {
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  cursor: pointer;
+  color: #333333;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 6px 16px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffffff;
+  transition: var(--cc-transition);
+}
+
+.myButton:hover,
+.myButton.is-active {
+  background: linear-gradient(to bottom, #16305c 5%, #0a1428 100%);
+  background-color: #0a1428;
+  color: #ffffff;
+  border-color: #0a1428;
+  text-shadow: none;
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   7. STOREFRONT PRODUCT CARD
+   -------------------------------------------------------------------------- */
+.cc-product-box {
+  background: #ffffff;
+  border: 1px solid #e3e7ee;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  transition: var(--cc-transition);
+}
+
+.cc-product-box:hover {
+  border-color: #93c5fd;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -4px rgba(15, 23, 42, 0.1);
+}
+
+.cc-product-img-wrapper {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.cc-product-img-wrapper img {
+  max-height: 100%;
+  max-width: 95%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.cc-product-box:hover .cc-product-img-wrapper img {
+  transform: scale(1.06);
+}
+
+/* Tags: DEFAULT COMPANY, VIP SPECS, SALE */
+.default-tag {
+  display: inline-block;
+  background: #334155;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  width: fit-content;
+}
+
+.vip-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, #f59e0b, #b45309);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  width: fit-content;
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.3);
+}
+
+.sale-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--cc-danger);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  z-index: 2;
+}
+
+.cc-product-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--cc-navy-950);
+  line-height: 1.4;
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 38px;
+}
+
+.cc-product-price {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--cc-danger);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.cc-price-orig {
+  font-size: 13px;
+  color: var(--cc-muted);
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
+/* Specs list box with signature .blue highlights */
+.cc-product-specs {
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: #334155;
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  flex-grow: 1;
+}
+
+.cc-product-specs b.blue {
+  color: #190ee9;
+  font-weight: 700;
+}
+
+.cc-specs-divider {
+  border-top: 1px dashed #cbd5e1;
+  margin: 6px 0;
+}
+
+.cc-free-gift {
+  color: #16a34a;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Card Actions */
+.cc-product-actions {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.cc-btn-cart {
+  background: var(--cc-blue-600);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: var(--cc-transition);
+}
+
+.cc-btn-cart:hover {
+  background: #120ac4;
+  color: #ffffff;
+}
+
+.cc-btn-tg {
+  background: #2aabee;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 8px 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: var(--cc-transition);
+  text-decoration: none;
+}
+
+.cc-btn-tg:hover {
+  background: #229ed9;
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   8. PROMOTION DEALER BANNERS
+   -------------------------------------------------------------------------- */
+.cc-dealer-banner {
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 24px 0;
+  box-shadow: var(--cc-shadow-sm);
+  border: 1px solid var(--cc-border);
+}
+
+.cc-dealer-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   9. FLOATING ACTION BUTTONS (FIXED RIGHT)
+   -------------------------------------------------------------------------- */
+.floating-buttons {
+  position: fixed;
+  right: 18px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1045;
+}
+
+.floating-button {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: var(--cc-transition);
+  text-decoration: none;
+}
+
+.floating-button:hover {
+  transform: scale(1.1) translateY(-2px);
+  color: #ffffff;
+}
+
+.floating-button.facebook { background: #1877f2; }
+.floating-button.telegram { background: #2aabee; }
+.floating-button.whatapp { background: #25d366; }
+.floating-button.floating-button--wechat { background: #07c160; }
+.floating-button.back-to-top {
+  background: var(--cc-navy-950);
+  color: var(--cc-yellow-500);
+}
+
+/* --------------------------------------------------------------------------
+   10. PROMO POPUP
+   -------------------------------------------------------------------------- */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 20, 40, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 16px;
+}
+
+.popup-content {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+  max-height: calc(100vh - 32px);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--cc-shadow-lg);
+  background: #ffffff;
+  animation: popupScale 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#promoPopup[hidden] {
+  display: none !important;
+}
+
+.popup-content img {
+  display: block;
+  width: 100%;
+  max-height: calc(100vh - 32px);
+  object-fit: contain;
+}
+
+@keyframes popupScale {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--cc-transition);
+}
+
+.popup-close:hover {
+  background: var(--cc-danger);
+}
+
+/* --------------------------------------------------------------------------
+   11. MODERN CC FOOTER
+   -------------------------------------------------------------------------- */
+.cc-footer {
+  background: var(--cc-navy-950);
+  color: #94a3b8;
+  font-size: 13.5px;
+  border-top: 3px solid var(--cc-yellow-500);
+  margin-top: 48px;
+}
+
+.cc-footer a {
+  color: #94a3b8;
+  transition: var(--cc-transition);
+}
+
+.cc-footer a:hover {
+  color: var(--cc-yellow-500);
+}
+
+.cc-footer-title {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.cc-payment-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Replace the template's broken URL breadcrumb divider with a compact slash. */
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "/";
+}
+
+/* Toast notification */
+#ccToast {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 2050;
+  min-width: 280px;
+}
+
+/* Keep the quick-contact actions clear of the header and page controls on phones. */
+@media (max-width: 991.98px) {
+  .cc-header {
+    position: relative;
+  }
+
+  .floating-buttons {
+    right: max(14px, env(safe-area-inset-right));
+    bottom: max(14px, env(safe-area-inset-bottom));
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .floating-button {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+  }
+
+  .floating-button.facebook,
+  .floating-button--wechat,
+  .floating-button.back-to-top {
+    display: none;
+  }
+
+  #ccToast {
+    top: 12px;
+    right: 12px;
+    left: 12px;
+    min-width: 0;
+  }
+
+  .cc-nav-bar {
+    position: relative;
+    top: auto;
+  }
+}
+
+:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .ticker-track {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
